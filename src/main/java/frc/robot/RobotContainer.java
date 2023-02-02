@@ -5,8 +5,8 @@
 package frc.robot;
 
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.SolenoidCommand;
-import frc.robot.subsystems.SolenoidSubsystem;
+import frc.robot.commands.PenumaticsCommand;
+import frc.robot.subsystems.PenumaticsSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -20,23 +20,23 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final SolenoidSubsystem m_solenoidSub = new SolenoidSubsystem();
+  private final PenumaticsSubsystem m_penumaticsSub = new PenumaticsSubsystem();
 
   Joystick js1 = new Joystick(OIConstants.kDriveTrainJoystickPort);
 
   public RobotContainer() {
     configureButtonBindings();
   
-    m_solenoidSub.setDefaultCommand(new RunCommand(()->{ m_solenoidSub.forward(); }, m_solenoidSub));
-    m_solenoidSub.setDefaultCommand(new RunCommand(()->{ m_solenoidSub.stop(); }, m_solenoidSub));
+    m_penumaticsSub.setDefaultCommand(new RunCommand(()->{ m_penumaticsSub.forward(); }, m_penumaticsSub));
+    m_penumaticsSub.setDefaultCommand(new RunCommand(()->{ m_penumaticsSub.stop(); }, m_penumaticsSub));
   }
 
   private void configureButtonBindings() {
     new JoystickButton(js1, OIConstants.Btn_A)
-      .onTrue(new SolenoidCommand(m_solenoidSub, "Forward"));
+      .onTrue(new PenumaticsCommand(m_penumaticsSub, "Forward"));
 
     new JoystickButton(js1, OIConstants.Btn_B)
-      .onTrue(new SolenoidCommand(m_solenoidSub, "Reverse"));
+      .onTrue(new PenumaticsCommand(m_penumaticsSub, "Reverse"));
   }
 
   /**

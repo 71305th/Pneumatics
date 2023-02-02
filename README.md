@@ -15,7 +15,7 @@ Commiter : Moyu
 
 ## Features
 
-1. Change Command snd Subsystem name to `SolenoidSubsystem` and `SolenoidCommand`
+1. Change Command snd Subsystem name to `PenumaticsSubsystem` and `PenumaticsCommand`
 2. Remove Constants Input
     1. 
         ```java
@@ -44,10 +44,10 @@ Commiter : Moyu
     1. Improve Button Design
         ```java
             new JoystickButton(js1, OIConstants.Btn_A)
-                .onTrue(new SolenoidCommand(m_solenoidSub, "Forward"));
+                .onTrue(new SolenoidCommand(m_penumaticsSub, "Forward"));
 
             new JoystickButton(js1, OIConstants.Btn_B)
-                .onTrue(new SolenoidCommand(m_solenoidSub, "Reverse"));
+                .onTrue(new SolenoidCommand(m_penumaticsSub, "Reverse"));
         ```
     
     2. Combine Two Commands Into One
