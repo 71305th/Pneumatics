@@ -5,16 +5,12 @@
 package frc.robot;
 
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.Grab;
-import frc.robot.commands.Release;
-import frc.robot.subsystems.Solenoid;
+import frc.robot.commands.SolenoidCommand;
+import frc.robot.subsystems.SolenoidSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,22 +20,23 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Solenoid m_solenoid = new Solenoid();
-  private final Grab grab = new Grab(m_solenoid);
-  private final Release release = new Release(m_solenoid);
+  private final SolenoidSubsystem m_solenoidSub = new SolenoidSubsystem();
 
   Joystick js1 = new Joystick(OIConstants.kDriveTrainJoystickPort);
+
   public RobotContainer() {
-    
     configureButtonBindings();
   
-  m_solenoid.setDefaultCommand(new RunCommand(()->{m_solenoid.forward(Value.kForward);},m_solenoid));
-  m_solenoid.setDefaultCommand(new RunCommand(()->{m_solenoid.stop(Value.kOff);},m_solenoid));
-
+    m_solenoidSub.setDefaultCommand(new RunCommand(()->{ m_solenoidSub.forward(); }, m_solenoidSub));
+    m_solenoidSub.setDefaultCommand(new RunCommand(()->{ m_solenoidSub.stop(); }, m_solenoidSub));
   }
+
   private void configureButtonBindings() {
-    new JoystickButton(js1, OIConstants.Btn_A).onFalse(grab);
-    new JoystickButton(js1, OIConstants.Btn_B).onFalse(release);
+    new JoystickButton(js1, OIConstants.Btn_A)
+      .onTrue(new SolenoidCommand(m_solenoidSub, "Forward"));
+
+    new JoystickButton(js1, OIConstants.Btn_B)
+      .onTrue(new SolenoidCommand(m_solenoidSub, "Reverse"));
   }
 
   /**

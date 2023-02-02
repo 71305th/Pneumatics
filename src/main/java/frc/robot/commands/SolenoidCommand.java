@@ -4,35 +4,42 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Solenoid;
+import frc.robot.subsystems.SolenoidSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class Grab extends CommandBase {
+public class SolenoidCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Solenoid m_solenoid;
+  private final SolenoidSubsystem solenoid;
+  private final String status;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new solenoid command
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Grab(Solenoid solenoid) {
-    m_solenoid = solenoid;
+  public SolenoidCommand( SolenoidSubsystem solenoid, String flag ) {
+    this.solenoid = solenoid;
+    status = flag;
+
+    System.out.println(status);
+
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_solenoid);
+    addRequirements(solenoid);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_solenoid.enablecompressor();
+    solenoid.enablecompressor();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_solenoid.forward();
+    System.out.println(status);
+    if( status == "Reverse" )  solenoid.reverse();
+    if( status == "Forward" ) solenoid.forward();
   }
 
   // Called once the command ends or is interrupted.

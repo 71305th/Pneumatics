@@ -13,6 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+   
    // PWM Channels
    public static final int kDriverJoystickPort = 0;
    public static final int kOperatorJoystickPort = 1;
@@ -39,10 +40,9 @@ public final class Constants {
    }
 
    public static final class PenumaticConstants {
-    public static final double kDefaultPeriod = 0;
-    public static final double kMaxPressure = 60;
-    public static final int DoubleSolenoidForwardChannel = 1;
-    public static final int DoubleSolenoidReserveChannel = 2;
-
- }
+      public static final double kDefaultPeriod = 0;
+      public static final double kMaxPressure = 60;
+      public static final int DoubleSolenoidForwardChannel = 1;
+      public static final int DoubleSolenoidReserveChannel = 2;
+   }
 }
