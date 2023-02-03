@@ -29,11 +29,15 @@ public class RobotContainer {
   
     m_penumaticsSub.setDefaultCommand(new RunCommand(()->{ m_penumaticsSub.forward(); }, m_penumaticsSub));
     m_penumaticsSub.setDefaultCommand(new RunCommand(()->{ m_penumaticsSub.stop(); }, m_penumaticsSub));
+    m_penumaticsSub.setDefaultCommand(new RunCommand(()->{ m_penumaticsSub.Halfforward(); }, m_penumaticsSub));
   }
 
   private void configureButtonBindings() {
     new JoystickButton(js1, OIConstants.Btn_A)
       .onTrue(new PenumaticsCommand(m_penumaticsSub, "Forward"));
+    
+    new JoystickButton(js1, OIConstants.Btn_X)
+      .onTrue(new PenumaticsCommand(m_penumaticsSub, "HalfForward"));
 
     new JoystickButton(js1, OIConstants.Btn_B)
       .onTrue(new PenumaticsCommand(m_penumaticsSub, "Reverse"));
