@@ -36,7 +36,9 @@ public class PenumaticsSubsystem extends SubsystemBase {
     DoublePCM1.set(DoubleSolenoid.Value.kReverse);
     DoublePCM2.set(DoubleSolenoid.Value.kReverse);
   }
-  
+  public void HalfForward(){
+    DoublePCM1.set(DoubleSolenoid.Value.kReverse);
+  }
   public void stop(){
     DoublePCM1.set(DoubleSolenoid.Value.kOff);
     DoublePCM2.set(DoubleSolenoid.Value.kOff);
