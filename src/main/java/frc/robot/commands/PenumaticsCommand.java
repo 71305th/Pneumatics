@@ -40,6 +40,7 @@ public class PenumaticsCommand extends CommandBase {
     System.out.println(status);
     if( status == "Reverse" )  solenoid.reverse();
     if( status == "Forward" ) solenoid.forward();
+    if( status == "HalfForward" ) solenoid.HalfForward();
   }
 
   // Called once the command ends or is interrupted.
