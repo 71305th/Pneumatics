@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class PenumaticsSubsystem extends SubsystemBase {
+public class PneumaticsSubsystem extends SubsystemBase {
   /** Creates a new Solenoid. */
   private final Compressor pcmCompressor = new Compressor(0,PneumaticsModuleType.CTREPCM);
   private final DoubleSolenoid DoublePCM1 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
   private final DoubleSolenoid DoublePCM2 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
-  public PenumaticsSubsystem() {}
+  public PneumaticsSubsystem() {}
 
   @Override
   public void periodic() {

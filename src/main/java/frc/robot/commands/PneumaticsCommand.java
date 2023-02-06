@@ -4,13 +4,13 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.PenumaticsSubsystem;
+import frc.robot.subsystems.PneumaticsSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class PenumaticsCommand extends CommandBase {
+public class PneumaticsCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final PenumaticsSubsystem solenoid;
+  private final PneumaticsSubsystem solenoid;
   private final String status;
 
   /**
@@ -18,7 +18,7 @@ public class PenumaticsCommand extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public PenumaticsCommand( PenumaticsSubsystem solenoid, String flag ) {
+  public PneumaticsCommand( PneumaticsSubsystem solenoid, String flag ) {
     this.solenoid = solenoid;
     status = flag;
 
